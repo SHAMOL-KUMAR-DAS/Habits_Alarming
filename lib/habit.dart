@@ -26,14 +26,14 @@ class Habit {
     return map;
   }
 
-  Habit habitMapToObject(Map<String, dynamic> pillMap) {
+  Habit habitMapToObject(Map<String, dynamic> habitMap) {
     return Habit(
-        id: pillMap['id'],
-        name: pillMap['name'],
-        description: pillMap['amount'],
-        howManyWeeks: pillMap['howManyWeeks'],
-        time: pillMap['time'],
-        notifyId: pillMap['notifyId']);
+        id: habitMap['id'],
+        name: habitMap['name'],
+        description: habitMap['amount'],
+        howManyWeeks: habitMap['howManyWeeks'],
+        time: habitMap['time'],
+        notifyId: habitMap['notifyId']);
   }
 
 }

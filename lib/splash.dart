@@ -15,8 +15,8 @@ class _SplashState extends State<Splash> {
       backgroundColor: Colors.lightGreenAccent,
       // image: Image(
       //   image: AssetImage("assets/images/splash_image.png"),
-      //   // height: 1200,
-      //   // width: 1200,
+      //   height: 600,
+      //   width: 600,
       //   fit: BoxFit.fill,
       // ),
       navigateAfterSeconds: Welcome(),

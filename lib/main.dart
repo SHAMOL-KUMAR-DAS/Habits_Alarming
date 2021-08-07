@@ -44,6 +44,7 @@ class MedicineApp extends StatelessWidget {
         "/home": (context) => Home(),
       },
       initialRoute: "/",
+      debugShowCheckedModeBanner: false,
     );
   }
 }

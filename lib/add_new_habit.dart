@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
@@ -30,13 +29,9 @@ class _AddNewHabitState extends State<AddNewHabit> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
 
-  //==========================================
-
   //-------------- Database and notifications ------------------
   final Repository _repository = Repository();
   final Notifications _notifications = Notifications();
-
-  //============================================================
 
   @override
   void initState() {
@@ -97,15 +92,11 @@ class _AddNewHabitState extends State<AddNewHabit> {
                 child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: FormFields(
-                        howManyWeeks,
                         selectWeight,
                         popUpMenuItemChanged,
                         sliderChanged,
                         nameController,
                         amountController)),
-              ),
-              SizedBox(
-                height: deviceHeight * 0.04,
               ),
               Container(
                 width: double.infinity,
@@ -121,7 +112,6 @@ class _AddNewHabitState extends State<AddNewHabit> {
                           buttonChild: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(width: 10),
                               Text(
                                 DateFormat.Hm().format(this.setDate),
                                 style: TextStyle(
@@ -129,7 +119,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 5),
+                              SizedBox(width: MediaQuery.of(context).size.width*0.011),
                               Icon(
                                 Icons.access_time,
                                 size: 30,
@@ -141,9 +131,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 5,
-                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width*0.025,),
                     Expanded(
                       child: Container(
                         height: double.infinity,
@@ -160,7 +148,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 10),
+                              SizedBox(width: MediaQuery.of(context).size.width*0.011),
                               Icon(
                                 Icons.event,
                                 size: 30,
@@ -175,7 +163,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
                   ],
                 ),
               ),
-              Spacer(),
+              SizedBox(height: deviceHeight*0.1,),//Spacer(),
               Container(
                 height: deviceHeight * 0.09,
                 width: double.infinity,
@@ -211,7 +199,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
     await showTimePicker(
         context: context,
         initialTime: TimeOfDay.now(),
-        helpText: "Choose Time")
+        helpText: "Choose Your Time")
         .then((value) {
       DateTime newDate = DateTime(
           setDate.year,
@@ -256,7 +244,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
       //create pill object
       Habit habit = Habit(
           description: amountController.text,
-          howManyWeeks: howManyWeeks,
+          //howManyWeeks: howManyWeeks,
           name: nameController.text,
           time: setDate.millisecondsSinceEpoch,
           notifyId: Random().nextInt(10000000));
