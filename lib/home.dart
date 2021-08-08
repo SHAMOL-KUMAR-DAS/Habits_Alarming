@@ -49,7 +49,6 @@ class _HomeState extends State<Home> {
     });
     chooseDay(_daysList[_lastChooseDay]);
   }
-  //===================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +70,6 @@ class _HomeState extends State<Home> {
     );
 
     return Scaffold(
-      //backgroundColor: Colors.yellow.shade50,
       floatingActionButton: addButton,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: Color.fromRGBO(248, 248, 248, 1),

@@ -12,7 +12,6 @@ class Habit {
         this.name,
         this.notifyId});
 
-
   Map<String, dynamic> habitToMap() {
     Map<String, dynamic> map = Map();
     map['id'] = this.id;

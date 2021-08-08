@@ -29,7 +29,6 @@ class _AddNewHabitState extends State<AddNewHabit> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
 
-  //-------------- Database and notifications ------------------
   final Repository _repository = Repository();
   final Notifications _notifications = Notifications();
 
@@ -244,12 +243,10 @@ class _AddNewHabitState extends State<AddNewHabit> {
       //create pill object
       Habit habit = Habit(
           description: amountController.text,
-          //howManyWeeks: howManyWeeks,
           name: nameController.text,
           time: setDate.millisecondsSinceEpoch,
           notifyId: Random().nextInt(10000000));
 
-      //---------------------| Save as many medicines as many user checks |----------------------
       for (int i = 0; i < howManyWeeks; i++) {
         dynamic result =
         await _repository.insertData("Pills", habit.habitToMap());

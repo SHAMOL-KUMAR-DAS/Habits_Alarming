@@ -13,7 +13,6 @@ class Repository{
     return _database;
   }
 
-  //insert something to database
   Future<int> insertData(String table,Map<String,dynamic> data) async{
     Database db = await database;
     try{
@@ -23,7 +22,6 @@ class Repository{
     }
   }
 
-  //get all data from database
   Future<List<Map<String,dynamic>>> getAllData(table) async{
     Database db = await database;
     try{
@@ -33,7 +31,6 @@ class Repository{
     }
   }
 
-  //delete data
   Future<int> deleteData(String table,int id) async{
     Database db = await database;
     try{
