@@ -11,10 +11,10 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      backgroundColor: Colors.lightGreenAccent,
+      backgroundColor: Theme.of(context).primaryColor,
       navigateAfterSeconds: Welcome(),
       seconds: 3,
-      loadingText: Text("Connected with your habits",style: TextStyle(fontSize: 20),),
+      loadingText: Text("Connected with your habits",style: TextStyle(fontSize: 20,color: Colors.white),),
     );
   }
 }

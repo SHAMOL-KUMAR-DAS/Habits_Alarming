@@ -35,7 +35,9 @@ class MedicineApp extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 fontSize: 20.0,
                 fontFamily: "Popins",
-              ))),
+              )),
+        primarySwatch: Colors.red
+      ),
 
       routes: {
         "/": (context) => Splash(),
