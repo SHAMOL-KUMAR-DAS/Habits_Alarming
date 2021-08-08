@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:jouleslab/add_new_habit.dart';
 import 'package:jouleslab/home.dart';
 import 'package:jouleslab/splash.dart';
-import 'package:jouleslab/welcome.dart';
 
 void main() {
   runApp(MedicineApp());

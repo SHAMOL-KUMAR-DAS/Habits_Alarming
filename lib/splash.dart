@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jouleslab/home.dart';
 import 'package:jouleslab/welcome.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -13,12 +12,6 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return SplashScreen(
       backgroundColor: Colors.lightGreenAccent,
-      // image: Image(
-      //   image: AssetImage("assets/images/splash_image.png"),
-      //   height: 600,
-      //   width: 600,
-      //   fit: BoxFit.fill,
-      // ),
       navigateAfterSeconds: Welcome(),
       seconds: 3,
       loadingText: Text("Connected with your habits",style: TextStyle(fontSize: 20),),

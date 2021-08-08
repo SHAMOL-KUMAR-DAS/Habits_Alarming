@@ -2,13 +2,11 @@ class Habit {
   int id;
   String name;
   String description;
-  int howManyWeeks;
   int time;
   int notifyId;
 
   Habit(
       {this.id,
-        this.howManyWeeks,
         this.time,
         this.description,
         this.name,
@@ -20,7 +18,6 @@ class Habit {
     map['id'] = this.id;
     map['name'] = this.name;
     map['amount'] = this.description;
-    map['howManyWeeks'] = this.howManyWeeks;
     map['time'] = this.time;
     map['notifyId'] = this.notifyId;
     return map;
@@ -31,7 +28,6 @@ class Habit {
         id: habitMap['id'],
         name: habitMap['name'],
         description: habitMap['amount'],
-        howManyWeeks: habitMap['howManyWeeks'],
         time: habitMap['time'],
         notifyId: habitMap['notifyId']);
   }
