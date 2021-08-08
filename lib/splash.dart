@@ -13,7 +13,7 @@ class _SplashState extends State<Splash> {
     return SplashScreen(
       backgroundColor: Theme.of(context).primaryColor,
       navigateAfterSeconds: Welcome(),
-      seconds: 3,
+      seconds: 1,
       loadingText: Text("Connected with your habits",style: TextStyle(fontSize: 20,color: Colors.white),),
     );
   }
