@@ -12,7 +12,7 @@ class Notifications {
     this._context = context;
 
     var initializationSettingsAndroid =
-    new AndroidInitializationSettings('');
+    new AndroidInitializationSettings('app_icon');
     var initializationSettingsIOS = new IOSInitializationSettings();
     var initializationSettings = new InitializationSettings(
         android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
