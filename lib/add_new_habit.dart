@@ -240,7 +240,6 @@ class _AddNewHabitState extends State<AddNewHabit> {
       snackbar.showSnack(
           "Check your habit time and date", _scaffoldKey, null);
     } else {
-      //create pill object
       Habit habit = Habit(
           description: amountController.text,
           name: nameController.text,
