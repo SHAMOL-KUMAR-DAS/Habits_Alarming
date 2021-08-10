@@ -248,7 +248,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
 
       for (int i = 0; i < howManyWeeks; i++) {
         dynamic result =
-        await _repository.insertData("Pills", habit.habitToMap());
+        await _repository.insertData("Habits", habit.habitToMap());
         if (result == null) {
           snackbar.showSnack("Something went wrong", _scaffoldKey, null);
           return;

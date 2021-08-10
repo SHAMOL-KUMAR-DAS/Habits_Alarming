@@ -103,7 +103,7 @@ class HabitCard extends StatelessWidget {
               child: Text("Delete",
                   style: TextStyle(color: Theme.of(context).primaryColor)),
               onPressed: () async {
-                await Repository().deleteData('Pills', habitId);
+                await Repository().deleteData('Habits', habitId);
                 await Notifications().removeNotify(notifyId, flutterLocalNotificationsPlugin);
                 setData();
                 Navigator.pop(context);

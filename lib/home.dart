@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
 
   Future setData() async {
     allListOfhabits.clear();
-    (await _repository.getAllData("Pills")).forEach((habitMap) {
+    (await _repository.getAllData("Habits")).forEach((habitMap) {
       allListOfhabits.add(Habit().habitMapToObject(habitMap));
     });
     chooseDay(_daysList[_lastChooseDay]);
