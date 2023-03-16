@@ -40,7 +40,7 @@ class _AddNewHabitState extends State<AddNewHabit> {
 
   //init notifications
   Future initNotifies() async => flutterLocalNotificationsPlugin =
-  await _notifications.initNotifies(context);
+      await _notifications.initNotifies(context);
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +76,12 @@ class _AddNewHabitState extends State<AddNewHabit> {
                 height: deviceHeight * 0.05,
                 child: FittedBox(
                     child: Text(
-                      "Add Habits",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline3
-                          .copyWith(color: Colors.black),
-                    )),
+                  "Add Habits",
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall
+                      .copyWith(color: Colors.black),
+                )),
               ),
               SizedBox(
                 height: deviceHeight * 0.03,
@@ -90,12 +90,8 @@ class _AddNewHabitState extends State<AddNewHabit> {
                 height: deviceHeight * 0.37,
                 child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: FormFields(
-                        selectWeight,
-                        popUpMenuItemChanged,
-                        sliderChanged,
-                        nameController,
-                        amountController)),
+                    child: FormFields(selectWeight, popUpMenuItemChanged,
+                        sliderChanged, nameController, amountController)),
               ),
               Container(
                 width: double.infinity,
@@ -118,7 +114,9 @@ class _AddNewHabitState extends State<AddNewHabit> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: MediaQuery.of(context).size.width*0.011),
+                              SizedBox(
+                                  width: MediaQuery.of(context).size.width *
+                                      0.011),
                               Icon(
                                 Icons.access_time,
                                 size: 30,
@@ -130,7 +128,9 @@ class _AddNewHabitState extends State<AddNewHabit> {
                         ),
                       ),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width*0.025,),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.025,
+                    ),
                     Expanded(
                       child: Container(
                         height: double.infinity,
@@ -147,7 +147,9 @@ class _AddNewHabitState extends State<AddNewHabit> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: MediaQuery.of(context).size.width*0.011),
+                              SizedBox(
+                                  width: MediaQuery.of(context).size.width *
+                                      0.011),
                               Icon(
                                 Icons.event,
                                 size: 30,
@@ -162,7 +164,9 @@ class _AddNewHabitState extends State<AddNewHabit> {
                   ],
                 ),
               ),
-              SizedBox(height: deviceHeight*0.1,),//Spacer(),
+              SizedBox(
+                height: deviceHeight * 0.1,
+              ), //Spacer(),
               Container(
                 height: deviceHeight * 0.09,
                 width: double.infinity,
@@ -193,12 +197,11 @@ class _AddNewHabitState extends State<AddNewHabit> {
   void popUpMenuItemChanged(String value) =>
       setState(() => this.selectWeight = value);
 
-
   Future<void> openTimePicker() async {
     await showTimePicker(
-        context: context,
-        initialTime: TimeOfDay.now(),
-        helpText: "Choose Your Time")
+            context: context,
+            initialTime: TimeOfDay.now(),
+            helpText: "Choose Your Time")
         .then((value) {
       DateTime newDate = DateTime(
           setDate.year,
@@ -212,13 +215,12 @@ class _AddNewHabitState extends State<AddNewHabit> {
     });
   }
 
-
   Future<void> openDatePicker() async {
     await showDatePicker(
-        context: context,
-        initialDate: setDate,
-        firstDate: DateTime.now(),
-        lastDate: DateTime.now().add(Duration(days: 100000)))
+            context: context,
+            initialDate: setDate,
+            firstDate: DateTime.now(),
+            lastDate: DateTime.now().add(Duration(days: 100000)))
         .then((value) {
       DateTime newDate = DateTime(
           value != null ? value.year : setDate.year,
@@ -233,12 +235,11 @@ class _AddNewHabitState extends State<AddNewHabit> {
     });
   }
 
-
   Future saveHabit() async {
     if (setDate.millisecondsSinceEpoch <=
         DateTime.now().millisecondsSinceEpoch) {
       snackbar.showSnack(
-          "Check your habit time and date", _scaffoldKey, null);
+          context, "Check your habit time and date", _scaffoldKey, null);
     } else {
       Habit habit = Habit(
           description: amountController.text,
@@ -248,28 +249,28 @@ class _AddNewHabitState extends State<AddNewHabit> {
 
       for (int i = 0; i < howManyWeeks; i++) {
         dynamic result =
-        await _repository.insertData("Habits", habit.habitToMap());
+            await _repository.insertData("Habits", habit.habitToMap());
         if (result == null) {
-          snackbar.showSnack("Something went wrong", _scaffoldKey, null);
+          snackbar.showSnack(
+              context, "Something went wrong", _scaffoldKey, null);
           return;
         } else {
           //set the notification schedule
           tz.initializeTimeZones();
           tz.setLocalLocation(tz.getLocation('Europe/Warsaw'));
-          await _notifications.showNotification(habit.name, habit.description, time,
-              habit.notifyId,
-              flutterLocalNotificationsPlugin);
+          await _notifications.showNotification(habit.name, habit.description,
+              time, habit.notifyId, flutterLocalNotificationsPlugin);
           setDate = setDate.add(Duration(milliseconds: 604800000));
           habit.time = setDate.millisecondsSinceEpoch;
           habit.notifyId = Random().nextInt(10000000);
         }
       }
-      snackbar.showSnack("Saved", _scaffoldKey, null);
+      snackbar.showSnack(context, "Saved", _scaffoldKey, null);
       Navigator.pop(context);
     }
   }
 
   int get time =>
       setDate.millisecondsSinceEpoch -
-          tz.TZDateTime.now(tz.local).millisecondsSinceEpoch;
+      tz.TZDateTime.now(tz.local).millisecondsSinceEpoch;
 }

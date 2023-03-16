@@ -88,8 +88,8 @@ class HabitCard extends StatelessWidget {
           contentTextStyle:
           TextStyle(fontSize: 17.0, color: Colors.grey[800]),
           actions: [
-            FlatButton(
-              splashColor: Theme.of(context).primaryColor.withOpacity(0.3),
+            ElevatedButton(
+              // splashColor: Theme.of(context).primaryColor.withOpacity(0.3),
               child: Text(
                 "Cancel",
                 style: TextStyle(color: Theme.of(context).primaryColor),
@@ -98,8 +98,8 @@ class HabitCard extends StatelessWidget {
                 Navigator.of(context).pop();
               },
             ),
-            FlatButton(
-              splashColor: Theme.of(context).primaryColor.withOpacity(0.3),
+            ElevatedButton(
+              // splashColor: Theme.of(context).primaryColor.withOpacity(0.3),
               child: Text("Delete",
                   style: TextStyle(color: Theme.of(context).primaryColor)),
               onPressed: () async {
